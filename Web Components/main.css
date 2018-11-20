@@ -1,7 +1,18 @@
-#title{
+#title {
     color: #004481;
 }
 
-.test{
+.test {
     color: red;
 }
+
+--mixin-set-background {
+    background: red;
+}
+
+/* html {
+    --mixin-set-background: {
+        font: 16px Arial, sans-serif;
+        color: #333333;
+    }
+} */

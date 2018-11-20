@@ -8,6 +8,11 @@
             --text-color: white;
         }
 
+        /* --mixin-set-background {
+            background: red;
+        } */
+
+
         .btn-container {
             border: 2px dashed var(--main-color);
             padding: var(--padding);
@@ -15,16 +20,18 @@
         }
 
         .btn {
-            background-color: var(--main-color);
+            background: var(--main-color);
             border: 0;
             border-radius: 5px;
             color: var(--text-color);
             padding: var(--padding);
             text-transform: uppercase;
+
+            @apply --mixin-set-background;
         }
 
         .btn:hover {
-            background-color: var(--background-hover);
+            background: var(--background-hover);
             cursor: pointer;
         }
 
@@ -56,6 +63,7 @@
             super();
 
             this.importDocument = document.currentScript.ownerDocument;
+            console.log(this.importDocument);
 
             this.template = this.importDocument.querySelector('#customButtonTemplate');
             this.attachShadow({ mode: 'open' });

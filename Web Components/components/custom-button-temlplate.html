@@ -1,0 +1,76 @@
+<html>
+<template id="customButtonTemplate">
+    <style>
+        :host {
+            --main-color: #004481;
+            --padding: 1.5em;
+            --background-hover: #002e57;
+            --text-color: white;
+        }
+
+        .btn-container {
+            border: 2px dashed var(--main-color);
+            padding: var(--padding);
+            text-align: center;
+        }
+
+        .btn {
+            background-color: var(--main-color);
+            border: 0;
+            border-radius: 5px;
+            color: var(--text-color);
+            padding: var(--padding);
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: var(--background-hover);
+            cursor: pointer;
+        }
+
+        #title {
+            color: var(--main-color);
+        }
+
+        .test {
+            color: var(--main-color);
+        }
+    </style>
+
+    <div class="btn-container">
+        <h1 id="title">Esto es un titulo</h1>
+        <button class="btn">
+            <slot name="label-button"></slot>
+        </button>
+
+        <slot name="test"></slot>
+
+        <p id="customAttr"></p>
+    </div>
+</template>
+
+<script>
+
+    class CustomButtonTemplate extends HTMLElement {
+        constructor() {
+            super();
+
+            this.importDocument = document.currentScript.ownerDocument;
+
+            this.template = this.importDocument.querySelector('#customButtonTemplate');
+            this.attachShadow({ mode: 'open' });
+            this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+        }
+
+        connectedCallback() {
+            const customAttr = this.shadowRoot.querySelector('#customAttr');
+            customAttr.innerHTML = this.getAttribute('test-attr');
+        }
+
+    }
+
+    window.customElements.define('custom-button-template', CustomButtonTemplate);
+
+</script>
+
+</html>

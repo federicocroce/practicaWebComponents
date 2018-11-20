@@ -1,0 +1,101 @@
+<link rel="import" href="custom-button-temlplate.html">
+
+<template id="CustomCounter">
+    <style>
+        :host {
+            --main-color: #004481;
+            --padding: 1.5em;
+            --background-hover: #002e57;
+            --text-color: white;
+        }
+
+        .btn-container {
+            border: 2px dashed var(--main-color);
+            padding: var(--padding);
+            text-align: center;
+        }
+
+        .btn {
+            background-color: var(--main-color);
+            border: 0;
+            border-radius: 5px;
+            color: var(--text-color);
+            padding: var(--padding);
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: var(--background-hover);
+            cursor: pointer;
+        }
+
+        #title {
+            color: var(--main-color);
+        }
+
+        .test {
+            color: var(--main-color);
+        }
+    </style>
+
+    <div class="btn-container">
+        <h1 id="title">Contador</h1>
+        <button class="btn" id="btnAdd">
+            +
+        </button>
+
+
+        <p id="value"></p>
+
+        <!-- <custom-button-temlplate><label slot="label-button">Custom Label</label></custom-button-temlplate> -->
+        <custom-button-template test-attr='Esto es un attr'>
+            <p class="test" slot="test">My default text</p>
+            <label slot="label-button">Custom Label</label>
+        </custom-button-template>
+    </div>
+</template>
+
+<script>
+
+    class CustomCounter extends HTMLElement {
+        constructor() {
+            super();
+
+            this.importDocument = document.currentScript.ownerDocument;
+
+            this.template = this.importDocument.querySelector('#CustomCounter');
+            this.attachShadow({ mode: 'open' });
+            this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+
+            this.value = this.shadowRoot.querySelector('#value');
+            this.add = this.add.bind(this);
+
+            this.counter = 0;
+
+        }
+
+        connectedCallback() {
+
+            const btnAdd = this.shadowRoot.querySelector('#btnAdd');
+
+            btnAdd.onclick = this.add;
+            // customAttr.innerHTML = this.getAttribute('test-attr');
+        }
+
+        static get observedAttributes() {
+            return ['counter'];
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            this.value.innerText = this.counter;
+        }
+
+        add() {
+            this.setAttribute('counter', ++this.counter);
+        }
+
+    }
+
+    window.customElements.define('custom-counter', CustomCounter);
+
+</script>

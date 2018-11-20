@@ -38,7 +38,7 @@ class CustomButtonShdow extends HTMLElement {
         </style>
         <div class="btn-container">
           <h1 id="title">Esto es un titulo</h1>
-          <button class="btn">Comprar Ahora</button>
+          <button class="btn">Button</button>
         </div>
       `;
     }

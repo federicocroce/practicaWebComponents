@@ -6,7 +6,7 @@ class CustomButton extends HTMLElement {
   connectedCallback () {
     this.innerHTML = `
       <div>
-        <button>Comprar Ahora</button>
+        <button>Button</button>
       </div>
     `;
   }

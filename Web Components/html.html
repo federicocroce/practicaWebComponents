@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,23 +12,27 @@
     <script src="components/custom-button-shadow.js"></script>
     <!-- <script src="./components/custom-counter.js"></script> -->
 
-    <link rel="import" href="./components/custom-button-temlplate.html">
+    <link rel="import" href="./components/custom-button-template.html">
     <link rel="import" href="./components/custom-counter.html">
+    <!-- <link rel="import" href="./components/tema.html"> -->
 
 </head>
-
 <body>
 
     <h1 id="title">Prueba de Web Components</h1>
 
     <custom-button></custom-button>
+    
     <custom-button-shadow></custom-button-shadow>
+
     <custom-button-template test-attr='Esto es un attr'>
-        <p class="test" slot="test">Slot Test</p>
-        <label slot="label-button">Custom Label</label>
+            <p class="test" slot="test">Slot Test</p>
+            <label slot="label-button">Custom Label</label>
     </custom-button-template>
 
-    <custom-counter></custom-counter>
-</body>
 
+
+    <custom-counter></custom-counter>
+
+</body>
 </html>

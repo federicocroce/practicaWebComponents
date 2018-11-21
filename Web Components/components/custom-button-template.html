@@ -1,17 +1,44 @@
 <html>
 <template id="customButtonTemplate">
+
     <style>
         :host {
             --main-color: #004481;
             --padding: 1.5em;
             --background-hover: #002e57;
             --text-color: white;
+
+            /*             
+            --mixin-set-background: {
+                color: red;
+            }
+
+            ;
+
+            --zero-size: {
+                color: green;
+            }
+
+            ; */
         }
+
+        /* :root {
+            --mixin-set-background: {
+                color: red;
+            }
+
+            ;
+
+            --zero-size: {
+                color: green;
+            }
+
+            ;
+        } */
 
         /* --mixin-set-background {
             background: red;
         } */
-
 
         .btn-container {
             border: 2px dashed var(--main-color);
@@ -27,7 +54,8 @@
             padding: var(--padding);
             text-transform: uppercase;
 
-            @apply --mixin-set-background;
+            /* @apply --mixin-set-background;
+            @apply --zero-size; */
         }
 
         .btn:hover {
@@ -50,7 +78,7 @@
             <slot name="label-button"></slot>
         </button>
 
-        <slot name="test"></slot>
+        <slot class="test" name="test"></slot>
 
         <p id="customAttr"></p>
     </div>
@@ -58,20 +86,30 @@
 
 <script>
 
+    
+    var template = document.currentScript.ownerDocument.querySelector('#customButtonTemplate');
+
     class CustomButtonTemplate extends HTMLElement {
         constructor() {
             super();
-
-            this.importDocument = document.currentScript.ownerDocument;
-            console.log(this.importDocument);
-
-            this.template = this.importDocument.querySelector('#customButtonTemplate');
+            this.template = template;
             this.attachShadow({ mode: 'open' });
             this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+
+            // let shadowRoot = this.attachShadow({ mode: 'open' });
+            // const t = document.querySelector('#customButtonTemplate');
+            // const instance = t.content.cloneNode(true);
+            // shadowRoot.appendChild(instance);
+
+            // this.shadowRoot = shadowRoot;
+
+            
         }
 
         connectedCallback() {
+
             const customAttr = this.shadowRoot.querySelector('#customAttr');
+            const callbackBtn = this.shadowRoot.querySelector('#callback-btn');
             customAttr.innerHTML = this.getAttribute('test-attr');
         }
 

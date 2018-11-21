@@ -1,5 +1,6 @@
+<!-- <link rel="import" href="./custom-button-template.html"> -->
 <template id="CustomCounter">
-    <link rel="import" href="./custom-button-temlplate.html">
+
     <style>
         :host {
             --main-color: #004481;
@@ -45,9 +46,10 @@
 
 
         <p id="value"></p>
-<!-- 
-        <custom-button-temlplate><label slot="label-button">Custom Label</label></custom-button-temlplate> -->
-        <custom-button-template></custom-button-template>
+
+        <!-- <custom-button-template callback-btn="this.add">
+            <label slot="label-button">+</label>
+        </custom-button-template> -->
     </div>
 </template>
 
@@ -95,3 +97,5 @@
     window.customElements.define('custom-counter', CustomCounter);
 
 </script>
+
+</html>

@@ -7,38 +7,7 @@
             --padding: 1.5em;
             --background-hover: #002e57;
             --text-color: white;
-
-            /*             
-            --mixin-set-background: {
-                color: red;
-            }
-
-            ;
-
-            --zero-size: {
-                color: green;
-            }
-
-            ; */
         }
-
-        /* :root {
-            --mixin-set-background: {
-                color: red;
-            }
-
-            ;
-
-            --zero-size: {
-                color: green;
-            }
-
-            ;
-        } */
-
-        /* --mixin-set-background {
-            background: red;
-        } */
 
         .btn-container {
             border: 2px dashed var(--main-color);
@@ -53,9 +22,6 @@
             color: var(--text-color);
             padding: var(--padding);
             text-transform: uppercase;
-
-            /* @apply --mixin-set-background;
-            @apply --zero-size; */
         }
 
         .btn:hover {
@@ -95,15 +61,6 @@
             this.template = template;
             this.attachShadow({ mode: 'open' });
             this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-
-            // let shadowRoot = this.attachShadow({ mode: 'open' });
-            // const t = document.querySelector('#customButtonTemplate');
-            // const instance = t.content.cloneNode(true);
-            // shadowRoot.appendChild(instance);
-
-            // this.shadowRoot = shadowRoot;
-
-            
         }
 
         connectedCallback() {
